@@ -16,6 +16,7 @@ const config: Config = {
       colors: {
         'primary-text-black': '#242C48',
         'primary-text-green': '#7AC241',
+        'primary-bg': '#FFF6EC',
       }
     },
   },
