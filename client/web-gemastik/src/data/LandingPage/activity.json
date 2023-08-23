@@ -1,0 +1,29 @@
+{
+  "activities": [
+    {
+      "id": 1,
+      "title": "Beach Clean Up",
+      "desc": "Kegiatan bersih-bersih pantai, mengumpulkan sampah-sampah yang mengotori pantai. Kegiatan ini bertujuan untuk membersihkan ekosistem pantai yang tercemari sampah hasil kegiatan atau aktivitas manusia di pantai"
+    },
+    {
+      "id": 2,
+      "title": "Mountain Clean Up",
+      "desc": "Kegiatan bersih-bersih gunung, mengumpulkan sampah-sampah yang mengotori sekitar gunung. Kegiatan ini bertujuan untuk membersihkan lingkungan di area bukit dan gunung yang tercemar sampah kegiatan-kegiatan terutama camping di area gunung."
+    },
+    {
+      "id": 3,
+      "title": "River Clean Up",
+      "desc": "Kegiatan membersihkan sungai dari berbagai limbah yang ada baik itu organik ataupun anorganik, agar ekosistem sungai terjaga kebersihanya sehingga manusia dapat memanfaatkan air maupun kehidupan di dalamnya"
+    },
+    {
+      "id": 4,
+      "title": "Mangroves Planting",
+      "desc": "Kegiatan penanaman pohon mangrove di kawasan yang gersang, yang bertujuan untuk penghijauan dari suatu ekosistem yang ada sehingga daerah pesisir dapat terlindung terutama dari abrasi."
+    },
+    {
+      "id": 5,
+      "title": "Trees Planting",
+      "desc": "kegiatan menanam pohon di daerah yang terkena deforestasi dan lahan terbuka, kegiatan dilakukan agar kawasan hutan dan ekosistem yang ada dapat menjadi hijau kembali"
+    }
+  ]
+}

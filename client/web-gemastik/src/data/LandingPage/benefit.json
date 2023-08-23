@@ -1,0 +1,19 @@
+{
+  "benefits": [
+    {
+      "id": 1,
+      "title": "Memberi Tujuan",
+      "desc": "Kamu mungkin dapat menemukan tujuan dengan menjadi bagian dari sesuatu yang lebih besar dan lebih hebat dari dirimu"
+    },
+    {
+      "id": 2,
+      "title": "Bertemu Teman Baru",
+      "desc": "Menjadi relawan adalah salah satu cara utnukmu mendapatkan relasi yang lebih luas dan teman yang sefrekuensi dengan mu"
+    },
+    {
+      "id": 3,
+      "title": "Meningkatkan Kepekaan",
+      "desc": "Menjadi relawan di suatu komunitas meningkatkan kepekaan dan wawasan mu terhadap apa yang terjadi pada lingkungan sekitarmu"
+    }
+  ]
+}
