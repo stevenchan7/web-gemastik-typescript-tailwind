@@ -9,7 +9,7 @@ export default async function BenefitSection() {
         <h3 className="text-4xl font-black mb-4">Manfaat Menjadi Relawan</h3>
         <p>Dapatkan berbagai manfaat ketika kamu menjadi relawan, karena disini kamu bisa menambah ilmu dan pengalaman serta berbagi canda dan tawa</p>
       </div>
-      <div className="flex flex-wrap lg:flex-nowrap">
+      <div className="flex flex-wrap lg:flex-nowrap justify-center">
         {data.map((dat, index) => <BenefitCard key={index} benefit={dat}  />)}
       </div>
     </div>

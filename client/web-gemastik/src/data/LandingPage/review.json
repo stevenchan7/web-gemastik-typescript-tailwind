@@ -1,0 +1,22 @@
+{
+  "reviews": [
+    {
+      "id": 1,
+      "name": "Steven Belva",
+      "status": "Mahasiswa",
+      "rev": "Pengalaman pertama ku menjadi relawan di Peduli Bumi engga akan pernah terlupa. Kegiatannya seru dan asyik banget, dan aku bisa bertemu dengan teman-teman baru dari berbagai tempat"
+    },
+    {
+      "id": 2,
+      "name": "Madya Santosa",
+      "status": "Mahasiswa",
+      "rev": "Senang rasanya bisa bergabung menjadi salah satu relawan di kegiatan-kegiatan seperti ini, rasanya seperti kita menjadi bagian penting dari perjalanan menuju bumi yan lebih baik"
+    },
+    {
+      "id": 3,
+      "name": "Gus Ryan",
+      "status": "Mahasiswa",
+      "rev": "Sumpah kalian harus banget coba jadi relawan di Peduli Bumi. Awalnya aku juga skeptis banget sama kegiatan-kegiatan kayak gini, tapi setelah diajakin temen dan dijalanin ternyata kegiatannya seru banget"
+    }
+  ]
+}
