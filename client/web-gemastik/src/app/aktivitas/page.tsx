@@ -1,7 +1,11 @@
+import Bar from "../components/ActivityPage/Bar"
+import Hero from "../components/ActivityPage/Hero"
+
 export default function ActivityPage() {
   return(
-    <div>
-      Halman Aktivitas
-    </div>
+    <main>
+      <Hero />
+      <Bar />
+    </main>
   )
 }
