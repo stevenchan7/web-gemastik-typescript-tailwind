@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction, RequestHandler } from 'express';
 import jwt from 'jsonwebtoken';
 import 'dotenv/config';
-import { User } from '../models/user.model';
-import { Model } from 'sequelize';
+import { User, UserModel } from '../models/user.model';
+import { Community, CommunityModel } from '../models/community.model';
 
 export type TypedUser = {
 	username: string;
@@ -16,27 +16,51 @@ export interface TypedRequestBodyUser<T> extends Request {
 
 export const checkDuplicateUsernameOrEmail = async (req: TypedRequestBodyUser<TypedUser>, res: Response, next: NextFunction) => {
 	try {
-		const { username, email } = req.body;
-		let user: Model | null;
-		// Find username
-		user = await User.findOne({
-			where: {
-				username: username,
-			},
-		});
-		// Send error if user exist
-		if (user) {
-			return res.status(403).json({ success: false, msg: 'Username already used' });
-		}
-		// Find user by email
-		user = await User.findOne({
-			where: {
-				email: email,
-			},
-		});
-		// Send error if user exist
-		if (user) {
-			return res.status(403).json({ success: false, msg: 'Email already used' });
+		const { username, email, role } = req.body;
+		let user: UserModel | CommunityModel | null;
+
+		if (role === 'volunteer') {
+			// Find username
+			user = await User.findOne({
+				where: {
+					username: username,
+				},
+			});
+			// Send error if user exist
+			if (user) {
+				return res.status(403).json({ success: false, msg: 'Username already used' });
+			}
+			// Find user by email
+			user = await User.findOne({
+				where: {
+					email: email,
+				},
+			});
+			// Send error if user exist
+			if (user) {
+				return res.status(403).json({ success: false, msg: 'Email already used' });
+			}
+		} else {
+			// Find username
+			user = await Community.findOne({
+				where: {
+					username: username,
+				},
+			});
+			// Send error if user exist
+			if (user) {
+				return res.status(403).json({ success: false, msg: 'Username already used' });
+			}
+			// Find user by email
+			user = await Community.findOne({
+				where: {
+					email: email,
+				},
+			});
+			// Send error if user exist
+			if (user) {
+				return res.status(403).json({ success: false, msg: 'Email already used' });
+			}
 		}
 		// Continue if no problem
 		next();
@@ -58,7 +82,7 @@ export const verifyToken = (req: Request, res: Response, next: NextFunction) => 
 		// Verify token
 		jwt.verify(token, JWT_SECRET!, (err, decoded) => {
 			if (err) {
-				return res.status(400).json({ success: false, err: err });
+				return res.status(401).json({ success: false, err: err });
 			}
 			console.log('Decoded result: ', decoded);
 			// Attach user object to request and assign it with id
@@ -69,6 +93,36 @@ export const verifyToken = (req: Request, res: Response, next: NextFunction) => 
 				console.log('user data', req.user);
 				next();
 			}
+		});
+	}
+};
+
+export const verifyTokenCommunity = (req: Request, res: Response, next: NextFunction) => {
+	let token: string;
+
+	if (req.session) {
+		token = req.session.token;
+
+		jwt.verify(token, JWT_SECRET!, (err, decoded) => {
+			if (err) {
+				return res.status(401).json({ success: false, err: err });
+			}
+
+			const userId = (decoded as JWTDecodedInterface).id;
+
+			Community.findByPk(userId)
+				.then((user) => {
+					if (!user) {
+						return res.status(400).json({ success: false, msg: 'Unauthorized' });
+					}
+					req.user = {
+						id: user.id,
+					};
+					next();
+				})
+				.catch((err) => {
+					console.log(err);
+				});
 		});
 	}
 };

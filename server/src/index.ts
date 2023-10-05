@@ -9,8 +9,10 @@ import { User } from './models/user.model';
 import registRouter from './routes/register.route';
 import loginRouter from './routes/login.route';
 import logoutRouter from './routes/logout.route';
+import communityRouter from './routes/community.route';
 // Middlewares
 import { verifyToken } from './middlewares/auth.middleware';
+import { Activity } from './models/activitiy.model';
 
 const app: Express = express();
 
@@ -40,6 +42,17 @@ app.use('/login', loginRouter);
 app.use('/signout', logoutRouter);
 app.get('/verifytoken-test', verifyToken, (req, res) => {
 	res.status(200).send(req.user?.id);
+});
+
+// Community routes
+app.use('/community', communityRouter);
+
+app.post('/create-activities', (req, res) => {
+	Activity.create({
+		title: 'Peduli Pantai',
+		desc: 'Peduli pantai adalah salah satu kegiatan dari Peduli Bumi yang bertujuan menjaga ekosistem pesisir pantai agar tetap lestari demi menjaga keindahan alam dan ekosistem di dalamnya',
+	});
+	res.send('Berhasil dibuat');
 });
 
 // PORT AND DB CONNECTION
