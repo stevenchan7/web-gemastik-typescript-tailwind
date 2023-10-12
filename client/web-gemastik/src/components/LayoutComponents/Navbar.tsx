@@ -7,14 +7,14 @@ import RightNavMenu from './RightNavMenu';
 
 export default function Navbar() {
 	const checkToggle = useRef<HTMLInputElement>(null);
-  const [isHamburger, setIsHamburger] = useState(true)
+	const [isHamburger, setIsHamburger] = useState(true);
 
 	// Handle check from other element
 	function handleCheckToggle() {
 		if (checkToggle.current != null) {
 			let curr_value: boolean = checkToggle.current.checked;
 			checkToggle.current.checked = !curr_value;
-      setIsHamburger(!isHamburger)
+			setIsHamburger(!isHamburger);
 		}
 	}
 
@@ -22,14 +22,12 @@ export default function Navbar() {
 		<>
 			<nav className='container mx-auto px-4 mt-4 flex lg:items-center flex-col lg:flex-row relative'>
 				<Image src='/Layout/logo.png' width={70} height={66} alt='Logo' />
-				<input className='peer hidden' type='checkbox' ref={checkToggle} /> {/* hidden check box */} 
-        <span
-					className='absolute top-4 right-4 cursor-pointer lg:hidden' onClick={handleCheckToggle}
-				>
-					<div className={`flex flex-col gap-2 relative ${isHamburger? '' : 'w-[24px] h-[24px]'}`}>
-            <div className={`w-8 h-0.5 bg-primary-text-black ${isHamburger? '' : 'rotate-45 absolute top-1/2 left-1/2 -translate-x-1/2 transition-transform'}`}></div>
-            <div className={`w-8 h-0.5 bg-primary-text-black ${isHamburger ? '' : 'hidden'}`}></div>
-            <div className={`w-8 h-0.5 bg-primary-text-black ${isHamburger? '' : '-rotate-45 absolute top-1/2 left-1/2 -translate-x-1/2 transition-transform'}`}></div>
+				<input className='peer hidden' type='checkbox' ref={checkToggle} /> {/* hidden check box */}
+				<span className='absolute top-4 right-4 cursor-pointer lg:hidden' onClick={handleCheckToggle}>
+					<div className={`flex flex-col gap-2 relative ${isHamburger ? '' : 'w-[24px] h-[24px]'}`}>
+						<div className={`w-8 h-0.5 bg-primary-black ${isHamburger ? '' : 'rotate-45 absolute top-1/2 left-1/2 -translate-x-1/2 transition-transform'}`}></div>
+						<div className={`w-8 h-0.5 bg-primary-black ${isHamburger ? '' : 'hidden'}`}></div>
+						<div className={`w-8 h-0.5 bg-primary-black ${isHamburger ? '' : '-rotate-45 absolute top-1/2 left-1/2 -translate-x-1/2 transition-transform'}`}></div>
 					</div>
 				</span>
 				{/* Checkbox to toggle navbar collapsible menu */}

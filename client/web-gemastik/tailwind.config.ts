@@ -9,9 +9,9 @@ const config: Config = {
 				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
 			},
 			colors: {
-				'primary-text-black': '#242C48',
-				'primary-text-green': '#7AC241',
-				'text-white': '#F4F7FA',
+				'primary-black': '#242C48',
+				'primary-green': '#7AC241',
+				'primary-white': '#F4F7FA',
 				'primary-bg': '#FFF6EC',
 			},
 		},

@@ -25,12 +25,12 @@ export default function ActivityCard({ eventData }: ActivityCardProps) {
 			<div className='flex flex-row p-2 h-full'>
 				<div className='basis-1/5 text-sm text-center p-2 flex flex-col justify-between gap-2'>
 					<p className='font-bold'>{dateString[2]}</p>
-					<p className='font-bold text-primary-text-green'>{dateString[1]}</p>
+					<p className='font-bold text-primary-green'>{dateString[1]}</p>
 					<p className='text-xs font'>{dateString[3]}</p>
 				</div>
 				<div className='basis-3/5 flex flex-col justify-between text-sm p-2 font-bold'>
 					<p>{eventData.activity}</p>
-					<p className='text-primary-text-green'>{eventData.title}</p>
+					<p className='text-primary-green'>{eventData.title}</p>
 					<p className='text-xs font-normal'>{eventData.venue}</p>
 				</div>
 				<div className='basis-1/5 flex flex-col justify-evenly items-center py-2'>
@@ -38,7 +38,7 @@ export default function ActivityCard({ eventData }: ActivityCardProps) {
 						<Image src='/Layout/default-user.png' width={30} height={30} alt='foto komunitas' />
 					</div>
 					<div className='text-[8px] text-center'>
-						<span className='font-bold text-primary-text-green'>{eventData.community}</span> Komunitas
+						<span className='font-bold text-primary-green'>{eventData.community}</span> Komunitas
 					</div>
 				</div>
 			</div>

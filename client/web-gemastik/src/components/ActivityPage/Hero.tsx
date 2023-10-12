@@ -7,7 +7,7 @@ export default function Hero() {
 			<div className='container mx-auto px-4'>
 				<div className='flex justify-end text-center lg:text-end'>
 					<div>
-						<h1 className='text-6xl text-primary-text-black lg:text-text-white font-bold leading-[4rem]'>
+						<h1 className='text-6xl text-primary-black lg:text-primary-white font-bold leading-[4rem]'>
 							Do It For A Better <br className='hidden lg:block' />
 							Future Life
 						</h1>
