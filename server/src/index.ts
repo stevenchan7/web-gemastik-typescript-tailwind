@@ -6,9 +6,7 @@ import { db } from './config/database.config';
 import { authenticateDB } from './utils/database.util';
 import { User } from './models/user.model';
 // Routes
-import registRouter from './routes/register.route';
-import loginRouter from './routes/login.route';
-import logoutRouter from './routes/logout.route';
+import authRouter from './routes/auth.route';
 import communityRouter from './routes/community.route';
 // Middlewares
 import { verifyToken } from './middlewares/auth.middleware';
@@ -37,15 +35,10 @@ app.use(
 app.get('/', (req: Request, res: Response) => {
 	res.send('Hello Worlddddd');
 });
-app.use('/register', registRouter);
-app.use('/login', loginRouter);
-app.use('/signout', logoutRouter);
+
 app.get('/verifytoken-test', verifyToken, (req, res) => {
 	res.status(200).send(req.user?.id);
 });
-
-// Community routes
-app.use('/community', communityRouter);
 
 app.post('/create-activities', (req, res) => {
 	Activity.create({
@@ -54,6 +47,12 @@ app.post('/create-activities', (req, res) => {
 	});
 	res.send('Berhasil dibuat');
 });
+
+// Auth endpoints
+app.use('/auth', authRouter);
+
+// Community endpoints
+app.use('/community', communityRouter);
 
 // PORT AND DB CONNECTION
 const PORT = process.env.PORT;

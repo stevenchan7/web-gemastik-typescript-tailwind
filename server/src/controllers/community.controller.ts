@@ -26,5 +26,6 @@ export const postEvent = (req: PostEventRequest<PostEventRequestBody>, res: Resp
 		})
 		.catch((err) => {
 			console.log(err);
+			res.status(400).send('Error creating event');
 		});
 };

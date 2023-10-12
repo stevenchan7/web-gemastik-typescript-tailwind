@@ -1,17 +1,8 @@
-import { InferAttributes, InferCreationAttributes, Model, CreationOptional, DataTypes } from 'sequelize';
+import { DataTypes } from 'sequelize';
 import { db } from '../config/database.config';
+import { EventTable } from '../types/table.type';
 
-interface EventModel extends Model<InferAttributes<EventModel>, InferCreationAttributes<EventModel>> {
-	id: CreationOptional<string>;
-	title: string;
-	date: string;
-	venue: string;
-	// Association
-	activityId?: string;
-	communityId?: string;
-}
-
-export const Event = db.define<EventModel>('event', {
+export const Event = db.define<EventTable>('event', {
 	id: {
 		primaryKey: true,
 		type: DataTypes.UUID,
@@ -29,5 +20,10 @@ export const Event = db.define<EventModel>('event', {
 	venue: {
 		type: DataTypes.STRING,
 		allowNull: false,
+	},
+	quota: {
+		type: DataTypes.INTEGER,
+		allowNull: false,
+		defaultValue: 0,
 	},
 });

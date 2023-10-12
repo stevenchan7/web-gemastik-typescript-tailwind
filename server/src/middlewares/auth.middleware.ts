@@ -1,8 +1,9 @@
 import { Request, Response, NextFunction, RequestHandler } from 'express';
 import jwt from 'jsonwebtoken';
 import 'dotenv/config';
-import { User, UserModel } from '../models/user.model';
-import { Community, CommunityModel } from '../models/community.model';
+import { User } from '../models/user.model';
+import { Community } from '../models/community.model';
+import { UserTable, CommunityTable } from '../types/table.type';
 
 export type TypedUser = {
 	username: string;
@@ -17,7 +18,7 @@ export interface TypedRequestBodyUser<T> extends Request {
 export const checkDuplicateUsernameOrEmail = async (req: TypedRequestBodyUser<TypedUser>, res: Response, next: NextFunction) => {
 	try {
 		const { username, email, role } = req.body;
-		let user: UserModel | CommunityModel | null;
+		let user: UserTable | CommunityTable | null;
 
 		if (role === 'volunteer') {
 			// Find username
@@ -113,11 +114,9 @@ export const verifyTokenCommunity = (req: Request, res: Response, next: NextFunc
 			Community.findByPk(userId)
 				.then((user) => {
 					if (!user) {
-						return res.status(400).json({ success: false, msg: 'Unauthorized' });
+						return res.status(401).json({ success: false, msg: 'Unauthorized' });
 					}
-					req.user = {
-						id: user.id,
-					};
+					req.user = user;
 					next();
 				})
 				.catch((err) => {

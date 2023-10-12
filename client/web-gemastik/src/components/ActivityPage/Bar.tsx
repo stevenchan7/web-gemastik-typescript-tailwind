@@ -4,7 +4,7 @@ import * as Form from '@radix-ui/react-form';
 
 export default function Bar() {
 	return (
-		<div className='container mx-auto px-4 pb-24'>
+		<div className='container mx-auto px-4 py-24'>
 			<div className='flex flex-wrap justify-center lg:justify-between items-center gap-4 lg:gap-0'>
 				<div className='basis-full lg:basis-1/2 text-center lg:text-start'>
 					<h2 className='text-4xl font-bold'>Kegiatan Relawan</h2>

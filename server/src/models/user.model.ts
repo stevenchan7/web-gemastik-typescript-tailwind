@@ -1,14 +1,8 @@
-import { DataTypes, Model, CreationOptional, InferAttributes, InferCreationAttributes } from 'sequelize';
+import { DataTypes } from 'sequelize';
 import { db } from '../config/database.config';
+import { UserTable } from '../types/table.type';
 
-export interface UserModel extends Model<InferAttributes<UserModel>, InferCreationAttributes<UserModel>> {
-	id: CreationOptional<string>;
-	username: string;
-	email: string;
-	password: string;
-}
-
-export const User = db.define<UserModel>('user', {
+export const User = db.define<UserTable>('user', {
 	id: {
 		primaryKey: true,
 		type: DataTypes.UUID,

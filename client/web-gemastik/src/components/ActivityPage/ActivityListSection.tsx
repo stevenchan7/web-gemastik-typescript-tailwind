@@ -1,19 +1,27 @@
 'use client';
 
 import { useState } from 'react';
-import ActivityCard from '../LandingPage/ActivityCard';
+import EventDialog from './EventDialog';
 import ReactPaginate from 'react-paginate';
 
 // Example items, to simulate fetching from another resources.
 const items = [1, 2, 3, 4, 5];
 
 function Items({ currentItems }: { currentItems: number[] }) {
+	// Dummy data
+	const eventDummy = {
+		title: 'Bersih Pantai Sanur',
+		venue: 'Pantai Sanur, Denpasar',
+		date: '2023-10-20',
+		activity: 'Peduli Pantai',
+		community: 'Pecinta Senja',
+	};
 	return (
 		<>
 			{currentItems &&
 				currentItems.map((item) => (
-					<div className='basis-full lg:basis-1/5 flex justify-center items-center'>
-						<ActivityCard />
+					<div className='basis-full lg:basis-1/3 xl:basis-1/4 flex justify-center items-center'>
+						<EventDialog eventData={eventDummy} />
 					</div>
 				))}
 		</>
@@ -39,17 +47,24 @@ function PaginatedItems({ itemsPerPage }: { itemsPerPage: number }) {
 		console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
 		setItemOffset(newOffset);
 	};
+
 	return (
 		<>
-			<Items currentItems={currentItems} />
+			<div className='flex flex-wrap justify-center items-center gap-8 lg:gap-0 xl:gap-12'>
+				<Items currentItems={currentItems} />
+			</div>
 			<ReactPaginate
-				className='flex'
+				className='flex justify-center items-center gap-2 mt-4'
 				breakLabel='...'
-				nextLabel='next >'
+				// The classname on tag li of each page element.
+				pageClassName='w-[24px] h-[24px] bg-[#FAEADE] flex justify-center items-center rounded-full'
+				pageLinkClassName='text-xs font-bold text-black/50'
+				activeLinkClassName='text-primary-text-black'
+				nextLabel='>'
 				onPageChange={handlePageClick}
 				pageRangeDisplayed={5}
 				pageCount={pageCount}
-				previousLabel='< previous'
+				previousLabel='<'
 				renderOnZeroPageCount={null}
 			/>
 		</>
@@ -58,10 +73,8 @@ function PaginatedItems({ itemsPerPage }: { itemsPerPage: number }) {
 
 export default function ActivityListSection() {
 	return (
-		<div className='container mx-auto px-4'>
-			<div className='flex flex-wrap justify-center items-center gap-12'>
-				<PaginatedItems itemsPerPage={3} />
-			</div>
+		<div className='container mx-auto mb-24 px-4'>
+			<PaginatedItems itemsPerPage={3} />
 		</div>
 	);
 }

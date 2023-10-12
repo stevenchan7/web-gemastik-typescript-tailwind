@@ -1,14 +1,8 @@
-import { DataTypes, InferAttributes, InferCreationAttributes, CreationOptional, Model } from 'sequelize';
+import { DataTypes } from 'sequelize';
 import { db } from '../config/database.config';
+import { CommunityTable } from '../types/table.type';
 
-export interface CommunityModel extends Model<InferAttributes<CommunityModel>, InferCreationAttributes<CommunityModel>> {
-	id: CreationOptional<string>;
-	username: string;
-	email: string;
-	password: string;
-}
-
-export const Community = db.define<CommunityModel>('community', {
+export const Community = db.define<CommunityTable>('community', {
 	id: {
 		primaryKey: true,
 		type: DataTypes.UUID,
